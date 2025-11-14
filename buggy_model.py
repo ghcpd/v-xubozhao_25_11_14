@@ -28,10 +28,19 @@ def score_user(age: int, credits: int) -> int:
     # --- BUG 3: score grows without limit ---
     # --- BUG 4: credits mis-handled if large values appear ---
 
-    score = age + credits  # completely wrong formula
+    def _ensure_int(value, label):
+        if not isinstance(value, int):
+            raise TypeError(f"{label} must be an integer, got {type(value).__name__}")
+        return value
 
-    # intentional broken “constraint handling”
-    if age > 200:  # meaningless check
-        score = -1
+    age = _ensure_int(age, "age")
+    credits = _ensure_int(credits, "credits")
 
-    return score
+    if not 0 <= age <= 120:
+        raise ValueError(f"age must be between 0 and 120, got {age}")
+
+    if not 0 <= credits <= 10000:
+        raise ValueError(f"credits must be between 0 and 10000, got {credits}")
+
+    score = age * 2 + credits // 10
+    return min(score, 5000)

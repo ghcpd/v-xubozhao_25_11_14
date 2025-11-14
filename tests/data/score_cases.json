@@ -1,0 +1,15 @@
+{
+  "valid_cases": [
+    {"age": 0, "credits": 0, "expected": 0},
+    {"age": 20, "credits": 100, "expected": 50},
+    {"age": 45, "credits": 850, "expected": 175},
+    {"age": 120, "credits": 10000, "expected": 1240},
+    {"age": 60, "credits": 9990, "expected": 1119}
+  ],
+  "invalid_cases": [
+    {"age": -1, "credits": 100},
+    {"age": 121, "credits": 500},
+    {"age": 50, "credits": -5},
+    {"age": 25, "credits": 10001}
+  ]
+}
