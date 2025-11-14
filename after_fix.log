@@ -1,0 +1,7 @@
+Fixed model outputs:
+age=20, credits=100 -> 50
+age=0, credits=0 -> 0
+age=120, credits=10000 -> 1240
+age=30, credits=95 -> 69
+age=-5, credits=100 -> raised ValueError: age must be between 0 and 120 inclusive
+age=25, credits=1000000 -> raised ValueError: credits must be between 0 and 10000 inclusive

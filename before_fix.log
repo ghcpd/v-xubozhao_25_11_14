@@ -1,0 +1,7 @@
+Original buggy model outputs:
+age=20, credits=100 -> 120
+age=0, credits=0 -> 0
+age=120, credits=10000 -> 10120
+age=30, credits=95 -> 125
+age=-5, credits=100 -> 95
+age=25, credits=1000000 -> 1000025
