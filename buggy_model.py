@@ -23,15 +23,15 @@ def score_user(age: int, credits: int) -> int:
     age=20, credits=100 → score = 20*2 + 100//10 = 40 + 10 = 50
     """
 
-    # --- BUG 1: negative values ignored ---
-    # --- BUG 2: wrong formula (using + instead of *) ---
-    # --- BUG 3: score grows without limit ---
-    # --- BUG 4: credits mis-handled if large values appear ---
+    # --- enforce constraint handling and use the intended formula ---
+    if not isinstance(age, int) or not isinstance(credits, int):
+        raise TypeError("age and credits must be integers")
 
-    score = age + credits  # completely wrong formula
+    if not (0 <= age <= 120):
+        raise ValueError("age must be between 0 and 120")
 
-    # intentional broken “constraint handling”
-    if age > 200:  # meaningless check
-        score = -1
+    if not (0 <= credits <= 10000):
+        raise ValueError("credits must be between 0 and 10000")
 
-    return score
+    score = age * 2 + credits // 10
+    return min(score, 5000)
