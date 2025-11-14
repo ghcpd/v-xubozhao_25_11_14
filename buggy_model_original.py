@@ -1,7 +1,17 @@
 """
+Original buggy implementation saved for demonstration / regression testing.
+DO NOT MODIFY THIS FILE.
+"""
+
+from typing import Any
+
+# Original content of buggy_model.py
+
+"""
 A simple scoring function for demonstration.
 BUGS are intentionally included for functional bug testing.
 """
+
 
 def score_user(age: int, credits: int) -> int:
     """
@@ -23,22 +33,15 @@ def score_user(age: int, credits: int) -> int:
     age=20, credits=100 → score = 20*2 + 100//10 = 40 + 10 = 50
     """
 
-    # Validate types
-    if not isinstance(age, int) or not isinstance(credits, int):
-        raise TypeError("age and credits must be integers")
+    # --- BUG 1: negative values ignored ---
+    # --- BUG 2: wrong formula (using + instead of *) ---
+    # --- BUG 3: score grows without limit ---
+    # --- BUG 4: credits mis-handled if large values appear ---
 
-    # Enforce constraints
-    if age < 0 or age > 120:
-        raise ValueError("age must be between 0 and 120 inclusive")
-    if credits < 0 or credits > 10000:
-        raise ValueError("credits must be between 0 and 10000 inclusive")
+    score = age + credits  # completely wrong formula
 
-    # Compute score using intended formula
-    score = age * 2 + credits // 10
+    # intentional broken 9constraint handling9
+    if age > 200:  # meaningless check
+        score = -1
 
-    # Cap the score
-    MAX_SCORE = 5000
-    if score > MAX_SCORE:
-        score = MAX_SCORE
-
-    return int(score)
+    return score

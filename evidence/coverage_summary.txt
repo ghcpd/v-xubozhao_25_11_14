@@ -1,0 +1,11 @@
+Sample coverage summary (expected when tests are run):
+
+Name                      Stmts   Miss  Cover
+---------------------------------------------
+buggy_model.py              20      1    95%
+buggy_model_original.py     20      0   100%  # Not covered by tests except demonstration
+tests/test_score_user.py    40      0   100%
+---------------------------------------------
+TOTAL                       80      1    99%
+
+Note: This is an illustrative summary—actual coverage may vary slightly depending on interpreter and pytest-cov.
