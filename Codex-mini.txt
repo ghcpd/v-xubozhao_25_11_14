@@ -1,0 +1,81 @@
+You are debugging a machine learning utility function that produces incorrect outputs
+and ignores input constraints.
+
+🎯 Task Today: Functional Bug Testing
+Category: Functional bug
+Definition: Model gives wrong output or ignores constraints.
+Evidence required: Input prompt + incorrect output.
+
+Your Tasks
+Analyze the provided buggy source file.
+Identify all functional bugs, especially logic errors and constraint-handling issues.
+Write corrections for the broken function.
+Create all missing components automatically:
+Test data (use the provided file as the input source).
+Pytest-compatible test suite.
+Reproducible environment setup (requirements, setup script).
+Test execution script (run_tests.sh).
+Ensure the entire workflow can run cleanly in a fresh environment.
+Produce:
+Final fixed code
+Test coverage report
+Logs showing incorrect behavior before the fix
+Confirmation tests pass after the fix
+Input File Provided
+You are given one file only:
+
+buggy_model.py
+(Your job is to read it, detect issues, fix them, and build the entire test ecosystem.)
+
+Requirements
+Generate test data automatically when needed.
+Create a fully reproducible environment (requirements + setup + run scripts).
+All tests must run with pytest.
+Include coverage reporting.
+Demonstrate the original incorrect output clearly.
+Demonstrate corrected behavior after your fix.
+Expected Output
+Full bug analysis
+Corrected implementation
+Tests for all functional paths
+Coverage report
+Evidence of incorrect vs corrected behavior
+Commands or scripts to reproduce everything
+
+Fixes
+
+buggy_model.py (lines 6-37) now enforces that age/credits are integers, checks the intended bounds, computes age*2 + credits//10, and caps the result at 5000 so bad inputs no longer slip through.
+scripts/generate_test_data.py (lines 1-92) extracts the docstring example, seeds deterministic random valid cases, and lists invalid-value scenarios; tests/test_scoring.py (lines 3-50) calls that generator when needed and exercises valid results, constraint violations, type errors, and the score-versus-formula relationship.
+requirements.txt, setup.sh (lines 1-6), setup.ps1 (lines 1-5), and run_tests.sh (lines 1-5) define the reproducible environment (pytest + coverage), setup helpers, and a single command that regenerates data, runs pytest, and writes coverage_report.txt (line 1) so the workflow can be repeated cleanly.
+Testing
+
+./run_tests.sh (pass; coverage report archived in coverage_report.txt (line 1))
+Artifacts
+
+logs/incorrect_behavior_before_fix.log (line 1) documents the old, incorrect outputs for representative inputs so the regression is visible after the fix.
+scripts/show_incorrect_behavior.py (lines 1-41) can be rerun to illustrate the original buggy logic before comparing to the corrected score_user.
+Next steps: run setup.sh (or setup.ps1 on Windows) to install dependencies, then rerun ./run_tests.sh whenever the model or tests change to regenerate data and refresh coverage.
+
+4 files changed
++31
+-27
+
+Undo
+
+View all changes
+buggy_model.py
++12
+-12
+
+generate_test_data.py
++12
+-11
+
+setup.ps1
++1
+-1
+
+test_scoring.py
++6
+-3
+

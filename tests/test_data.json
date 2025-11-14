@@ -1,0 +1,56 @@
+{
+  "valid": [
+    {
+      "age": 20,
+      "credits": 100,
+      "expected": 50
+    },
+    {
+      "age": 0,
+      "credits": 0,
+      "expected": 0
+    },
+    {
+      "age": 120,
+      "credits": 10000,
+      "expected": 1240
+    },
+    {
+      "age": 108,
+      "credits": 6311,
+      "expected": 847
+    },
+    {
+      "age": 97,
+      "credits": 6890,
+      "expected": 883
+    },
+    {
+      "age": 5,
+      "credits": 4242,
+      "expected": 434
+    }
+  ],
+  "invalid": [
+    {
+      "age": -1,
+      "credits": 50,
+      "error_contains": "age must be between 0 and 120"
+    },
+    {
+      "age": 121,
+      "credits": 0,
+      "error_contains": "age must be between 0 and 120"
+    },
+    {
+      "age": 20,
+      "credits": -10,
+      "error_contains": "credits must be between 0 and 10000"
+    },
+    {
+      "age": 20,
+      "credits": 10001,
+      "error_contains": "credits must be between 0 and 10000"
+    }
+  ]
+}
