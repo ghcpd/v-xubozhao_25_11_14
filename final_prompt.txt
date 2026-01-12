@@ -1,0 +1,45 @@
+You are debugging a machine learning utility function that produces incorrect outputs
+and ignores input constraints.
+
+## 🎯 Task Today: Functional Bug Testing
+Category: Functional bug  
+Definition: Model gives wrong output or ignores constraints.  
+Evidence required: Input prompt + incorrect output.
+
+## Your Tasks
+1. Analyze the provided buggy source file.
+2. Identify all functional bugs, especially logic errors and constraint-handling issues.
+3. Write corrections for the broken function.
+4. Create all missing components automatically:
+   - Test data (use the provided file as the input source).
+   - Pytest-compatible test suite.
+   - Reproducible environment setup (requirements, setup script).
+   - Test execution script (run_tests.sh).
+5. Ensure the entire workflow can run cleanly in a fresh environment.
+6. Produce:
+   - Final fixed code
+   - Test coverage report
+   - Logs showing incorrect behavior before the fix
+   - Confirmation tests pass after the fix
+
+## Input File Provided
+You are given one file only:
+
+`buggy_model.py`
+(Your job is to read it, detect issues, fix them, and build the entire test ecosystem.)
+
+## Requirements
+- Generate test data automatically when needed.
+- Create a fully reproducible environment (requirements + setup + run scripts).
+- All tests must run with pytest.
+- Include coverage reporting.
+- Demonstrate the original incorrect output clearly.
+- Demonstrate corrected behavior after your fix.
+
+## Expected Output
+- Full bug analysis
+- Corrected implementation
+- Tests for all functional paths
+- Coverage report
+- Evidence of incorrect vs corrected behavior
+- Commands or scripts to reproduce everything
